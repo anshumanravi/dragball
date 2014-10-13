@@ -1,0 +1,50 @@
+<head>
+  <title>dragball</title>
+</head>
+
+<body>
+	<div id="wrap">
+      <div class="container">
+        {{> reset}}
+        {{> circle}}
+        {{> balls}}
+      </div>
+  </div>
+  <div id="footer">
+      <div class="container">
+         {{> progress}}
+      </div>
+  </div>
+</body>
+
+<template name="circle">
+  <div class="circle centered">
+    <div id="droppable" class="inner-circle centered">drop</div>
+  </div>
+</template>
+
+<template name="progress">
+  <div class="progress">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%">
+            <span>{{progress}}% ({{dropcount}}/{{totalball}})</span>
+        </div>
+  </div>
+</template>
+
+<template name="balls">
+    <table class="centered" style="top:70%">
+      <tr>
+        {{#each balls}}
+            <td>{{> ball}}</td>
+        {{/each}}
+      </tr>
+    </table>
+</template>
+
+<template name="ball">
+  <div class="circle-ball" mongoid='{{_id}}' >{{seq}}</div>
+</template>
+
+<template name="reset">
+  <button id="resetall" class="btn btn-danger centered" style="top:80%" type="reset">Reset</button>
+</template>
